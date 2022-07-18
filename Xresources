@@ -1,0 +1,65 @@
+
+! URXVT APPEARANCE
+URxvt.font: xft:monaco:size=10
+!URxvt.geometry:                   84x16
+!URxvt.internalBorder:             20
+URxvt.cursorBlink:                true
+URxvt.cursorUnderline:            true
+!URxvt.saveline:                   32768
+URxvt.scrollBar:                  false
+!URxvt.scrollBar_right:            true
+!URxvt.scrollBar_floating:         false
+!URxvt.scrollstyle:                plain
+!URxvt.urgentOnBell:               false
+!URxvt.depth:                      32
+!URxvt.iso14755:                   false
+!URxvt.iconFile:                   /home/violet/.icons/gladient/term.png
+URxvt.keysym.C-i: 		  font-size:increase
+URxvt.keysym.C-o: 		  font-size:decrease
+URxvt.transparent: 		  false
+URxvt.shading:                    20
+! Uncomment if too much font spacing
+URxvt.letterSpace: 0
+! FONT
+URxvt.resize-font.step: 1
+
+! COLOR SCHEME
+! black > red > green > yellow > blue > magenta > cyan > white
+
+! special
+*.foreground:   #ffffff
+*.background:   #2d2f32
+*.cursorColor:  #ff00f4
+
+! black
+*.color0:       #75787e
+*.color8:       #75787e
+
+! red
+*.color1:       #e76f51
+*.color9:       #e76f51
+
+! green
+*.color2:       #6ba120
+*.color10:      #6ba120
+
+! yellow
+*.color3:       #bd9b49
+*.color11:      #bd9b49
+
+! blue
+*.color4:       #2da0ce
+*.color12:      #2da0ce
+
+! magenta
+*.color5:       #a23b72
+*.color13:      #a23b72
+
+! cyan
+*.color6:       #2a9d8f
+*.color14:      #2a9d8f
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
+
