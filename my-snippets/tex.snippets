@@ -1,0 +1,630 @@
+#Snippets for LaTeX
+#-----------------------------------------------------
+#Specific Snippets
+#-----------------------------------------------------
+
+#Set F
+snippet F "Make Set of F" i
+\mathbb{F}$1
+endsnippet
+
+#Base line skip
+snippet nl "Make New Line" i
+\vspace{\baselineskip}
+endsnippet
+
+#Make Bold
+snippet bf "Make Bold Letters" i
+\textbf{$1}$2
+endsnippet
+
+
+#infinity
+snippet inf "Infinity" i
+\infty $1
+endsnippet
+
+#integral
+snippet int "Integral" i
+\int_{$2}^{$1}$3 \; d$4  \; $5
+endsnippet
+
+
+#sqrt
+snippet sqrt "Square Root" i
+\sqrt{$1} $2
+endsnippet
+
+
+#text
+snippet txt "Make Test" i
+\text{$1} $2
+endsnippet
+
+#Begin Equation
+snippet beq "Begin Equation" i
+\begin{align}
+$1
+\end{align}
+$2
+endsnippet
+
+#make set of numbers
+snippet set "Set Notation" i
+\\{$1 \\}$2
+endsnippet
+
+
+#Dynamic rows
+global !p
+def create_row_placeholders(snip):
+    # retrieving single line from current string and treat it like tabstops
+    # count
+    placeholders_amount = int(snip.buffer[snip.line].strip())
+
+    # erase current line
+    snip.buffer[snip.line] = ''
+
+    # create anonymous snippet with expected content and number of tabstops
+    anon_snippet_body = ' & '.join(['$' + str(i+1)
+                                    for i in range(placeholders_amount)])
+
+    # expand anonymous snippet
+    snip.expand_anon(anon_snippet_body)
+endglobal
+
+post_jump "create_row_placeholders(snip)"
+snippet "tr(\d+)" "latex table row variable" br
+`!p snip.rv = match.group(1)`
+endsnippet
+
+
+
+#list
+snippet list2 "Make List" i
+\begin{dcases}
+	$1 \\\
+	$2 
+\end{dcases}
+$3
+endsnippet
+
+
+#list
+snippet list3 "Make List" i
+\begin{dcases}
+	$1 \\\
+	$2 \\\
+	$3
+\end{dcases}
+$4
+endsnippet
+
+
+
+#list
+snippet list4 "Make List" i
+\begin{dcases}
+	$1 \\\
+	$2 \\\
+	$3 \\\
+	$4
+\end{dcases}
+$5
+endsnippet
+
+
+
+
+#box
+snippet box "make box" i
+\fbox{$1}$2
+endsnippet
+
+
+
+
+
+
+#sum
+snippet sum "Make Sum" i 
+\sum_{$1} ^{$2} $3
+endsnippet
+
+#dot
+snippet dot "Derivative" i
+\dot{$1}$2
+endsnippet
+
+
+#dotdot
+snippet dot2 "Dot Dot" i
+\ddot{$1}$2
+endsnippet
+
+#derivative
+snippet d1 "1st Derivative" i
+\frac{d$1}{d$2}$3
+endsnippet
+
+
+#second derivative
+snippet d2 "2nd Derivative" i
+\frac{d^2$1}{d$2^2}$3
+endsnippet
+
+
+#partial derviative
+snippet p1 "1st Partial" i
+\frac{\partial $1}{\partial $2} $3
+endsnippet
+
+
+#second partial derviative
+snippet p2 "2nd Partial" i
+\frac{\partial^2 $1}{\partial $2^2} $3
+endsnippet
+
+
+#math
+snippet m "Math Mode" i
+$$1$$2
+endsnippet
+
+
+
+#math
+snippet M "Math Mode" i
+\begin{align*}
+$1
+\end{align*}
+$2
+endsnippet
+
+
+
+
+#therefore
+snippet tf "Therefore" i
+\therefore
+endsnippet
+
+
+
+#fraction
+snippet // "Fraction" i
+\frac{$1}{$2}$3
+endsnippet
+
+
+#subscript
+snippet L "Subscript" i
+_{$1}$2
+endsnippet
+
+
+#superscript
+snippet H "Superscript" i
+^{$1}$2
+endsnippet
+
+#equivalent
+snippet eqiv "Equivalent" i
+\equiv
+endsnippet
+
+#picture
+snippet pic "Begin Picture" i
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.6\textwidth]{$1}
+    \caption{$2}
+\end{figure}
+$3
+endsnippet
+
+#begin section
+snippet sec "Begin Section"
+%
+\hrulefill
+\mysection{$1}{$2}
+\begin{adjustwidth}{2.0em}{0pt}
+$3
+\end{adjustwidth}
+endsnippet
+
+
+#begin subsection
+snippet ssec "Begin Subsection"
+%
+\myssection{$1}{$2}
+\begin{adjustwidth}{2.0em}{0pt}
+$3
+\end{adjustwidth}
+endsnippet
+
+
+
+#begin subsubsection
+snippet sssec "Begin Subsubsection"
+%
+\mysssection{$1}{$2}
+\begin{adjustwidth}{2.0em}{0pt}
+$3
+\end{adjustwidth}
+endsnippet
+
+
+
+#in
+snippet in "In" i
+\in $1
+endsnippet
+
+
+#reals
+snippet R "Set of Reals" i
+\mathbb{R} $1
+endsnippet
+
+
+#integers
+snippet Z "Set of Integers" i
+\mathbb{Z} $1
+endsnippet
+
+
+#rationals
+snippet Q "Set of Rationals" i
+\mathbb{Q} $1
+endsnippet
+
+#Intersection
+snippet cap "Intersection" i
+\cap $1
+endsnippet
+
+#Union
+snippet cup "Union" i
+\cup $1
+endsnippet
+
+#Naturals
+snippet N "Set of Naturals" i
+\mathbb{N} $1
+endsnippet
+
+#hat
+snippet hat "wide hat" i
+\widehat{$1} $2
+endsnippet
+
+
+#Iff
+snippet iff "If and only if" i
+\iff $1
+endsnippet
+
+#Implies
+snippet imp "Implies" i
+\Longrightarrow $1
+endsnippet
+
+#forall
+snippet fa "For all" i
+\forall \; $1
+endsnippet
+
+
+#exists
+snippet E "There Exists" i
+\exists $1
+endsnippet
+
+#exists unique
+snippet E! "There Exists Uniquely" i
+\exists! $1
+endsnippet
+
+
+#doesn't exists
+snippet Ex "Doesn't Exist" i
+\nexists $1
+endsnippet
+
+
+#absolute value
+snippet abs "Absolute Value" i
+\lvert $1 \rvert $2
+endsnippet
+
+
+#not in
+snippet inx "Not In" i
+\notin $1
+endsnippet
+
+
+#proved
+snippet bye "Square" i
+\square
+endsnippet
+
+
+#contradiction
+snippet >< "Contradiction" i
+\Rightarrow \Leftarrow $1
+endsnippet
+
+
+#horizontal line across screen
+snippet hline "Horizontal Line" i
+\hrulefill $1
+endsnippet
+
+#bigspace
+snippet : "Big Space" i
+\quad $1
+endsnippet
+
+#smallspace
+snippet ; "Small Space" i
+\; $1
+endsnippet
+
+#defined as
+snippet das "Defined As" i
+\dot{=} $1
+endsnippet
+
+
+#less than or equal to
+snippet le "Less than or Equal" i
+\leq $1
+endsnippet
+
+
+#greater than or equal to
+snippet ge "Greater than or Equal" i
+\geq $1
+endsnippet
+
+
+#epsilon
+snippet ep "Epsilon" i
+\epsilon $1
+endsnippet
+
+#theorem
+snippet bth "Make Theorem" i
+\begin{theorem}[$1]
+$2
+\end{theorem}
+$3
+endsnippet
+
+
+#let
+snippet let "let in txt mode" i
+\; \text{let} \; $1
+endsnippet
+
+#Let
+snippet Let "Let in txt mode" i
+\; \text{Let} \; $1
+endsnippet
+
+#then
+snippet then "then in txt mode" i
+\; \text{then} \; $1
+endsnippet
+
+
+#Then
+snippet Then "then in txt mode" i
+\; \text{Then} \; $1
+endsnippet
+
+#-----------------------------------------------------
+#Formatting
+#-----------------------------------------------------
+
+# Create usable document
+snippet start "Basic Format"
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{sectsty}
+\usepackage{graphicx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Wimmergren}
+\lhead{$2}
+\cfoot{\thepage}
+
+\sectionfont{\normalfont\fontsize{10}{12}\selectfont}
+
+
+
+\subsectionfont{\normalfont\fontsize{10}{12}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{10}{12}\selectfont}
+\newcommand{\mysection}[2]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{#2}}
+\newcommand{\myssection}[2]{\setcounter{subsection}{#1}\addtocounter{subsection}{-1}\subsection{#2}}
+\newcommand{\mysssection}[2]{\setcounter{subsubsection}{#1}\addtocounter{subsubsection}{-1}\subsubsection{#2}}
+
+\date{$1}
+\author{Joseph W. Wimmergren}
+\title{$2}
+
+\begin{document}
+\maketitle
+$3
+
+
+\end{document}
+endsnippet
+
+
+
+	
+
+
+#Homework Format
+snippet starthw "Basic Homework Format"
+\documentclass{jhwhw}
+\date{$1}
+\author{Joseph W. Wimmergren}
+\title{$2}
+
+\begin{document}
+$3
+
+
+\end{document}
+endsnippet
+
+
+
+#start problem
+snippet prob "Start Problem" i
+\problem{$1 }
+$2
+\solution
+$3
+endsnippet
+
+#part of problem
+snippet parts "Start parts " i
+\begin{enumerate}
+$1
+\end{enumerate}
+$2
+endsnippet
+
+
+#parts
+snippet part "Start part" i
+\item $1
+
+endsnippet
+
+#solution
+snippet sol "Start Solution" i
+\part
+$1
+endsnippet
+
+#goes to
+snippet goes "Goes to" i
+\Longrightarrow $1
+endsnippet
+
+
+#xn
+snippet xn "xn" i
+x_{n} $1
+endsnippet
+
+
+#tilde
+snippet tld "tilde" i
+\widetilde{$1 }$2
+endsnippet
+
+#complex
+snippet C "complex" i
+\mathbb{C} $1
+endsnippet
+
+#use Tikz to draw a shape
+snippet tikz "tikz " i
+\begin{center}
+\begin{tikzpicture}
+$1 
+\end{tikzpicture}
+\end{center}
+$2
+endsnippet
+
+#make matrix
+snippet matrix "matrix" i
+\begin{pmatrix}
+$1
+\end{pmatrix}
+$2
+endsnippet
+
+
+#bar
+snippet bar "make bar" i
+\bar{$1}
+$2
+endsnippet
+
+
+
+#subscript 1
+snippet one "make subscript 1" i
+_1 $1
+endsnippet
+
+#subscript 2
+snippet two "make subscript 1" i
+_2 $1 
+endsnippet
+
+#subscript 3
+snippet three "make subscript 1" i
+_3 $1
+endsnippet
+
+#cos(z)
+snippet cosz "make complex cos" i
+\frac{e^{i$1 }+e^{-i$1}}{2} $2
+endsnippet
+
+#sin(z)
+snippet sinz "make complex sin" i
+\frac{e^{i$1 }-e^{-i$1}}{2i} $2
+endsnippet
+
+
+#valence plus
+snippet plus "make plus " i
+^+ $1
+endsnippet
+
+#valence minus
+snippet minus "make minus " i
+^- $1
+endsnippet
+
+
+#2 pictures side by side
+snippet pic2 "make 2 pics" i
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}[b]{0.49\textwidth}
+    \includegraphics[width=\textwidth]{$1}
+    \caption{$2}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.49\textwidth}
+    \includegraphics[width=\textwidth]{$3}
+    \caption{$4}
+  \end{minipage}
+\end{figure}
+$5
+endsnippet
+
+
+snippet p(z) "make polynomial" i
+p($1)=$1^{n}+a_{n-1}$1^{n-1}+...+a_1$1+a_0
+$2
+endsnippet
